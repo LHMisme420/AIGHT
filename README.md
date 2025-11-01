@@ -865,3 +865,15 @@ export const issueCredential = functions.https.onCall(async (data, context) => {
 - Lesson 7.3: **Ethics of Agentic AI:** Analyzing the risks of autonomous, self-directing software agents (planning and goal misalignment).
 - Activity: **"Humanize the Bot"** Challenge (Ethical Evasion Practice)
 - Assessment: **Final Defense Thesis** (Propose a new regulation for autonomous agents).
+cd backend/functions
+npm install
+npm run build
+firebase deploy --only functions
+# Start the ZKP Verification Service (Mandatory Pre-deployment)
+cd onchain/zkp
+npm install
+npm start 
+# Then, start the Solana anchor service
+cd ../solana
+npm install
+npm run start

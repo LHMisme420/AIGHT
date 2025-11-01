@@ -640,3 +640,4 @@ const MEMO_PROGRAM_ID=new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr
 })();`);
 
 console.log("\n✅ SAFE MIND repo scaffold created.");
+python init_safe_mind.py

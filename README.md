@@ -939,3 +939,16 @@ npm start
 cd ../solana
 npm install
 npm run start
+for file_path, content in files.items():
+    # Ensure directory exists
+    directory = os.path.dirname(file_path)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    # Write file content
+    try:
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content.strip())
+        print(f"Created: {file_path}")
+    except IOError as e:
+        print(f"Error writing file {file_path}: {e}")

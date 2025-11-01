@@ -1,4 +1,4 @@
-# AIGHT
+# SAFEMIND
 AI safety for teens
 safe-mind/
 ├── README.md

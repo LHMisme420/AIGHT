@@ -528,3 +528,115 @@ export { anchorRoot };
 - All student data is private by default.
 - No ads, no tracking.
 - Students can export their learning record.
+node init-safe-mind.js
+// init-safe-mind.js
+import { writeFileSync, mkdirSync } from "fs";
+import { join } from "path";
+
+function make(p, text) {
+  const dir = p.split("/").slice(0, -1).join("/");
+  if (dir) mkdirSync(dir, { recursive: true });
+  writeFileSync(p, text);
+  console.log("created", p);
+}
+
+make(".gitignore", `node_modules
+.expo
+dist
+.env
+.env.local
+firebase-debug.log
+*.log
+.idea
+.DS_Store`);
+
+make(".env.example", `FIREBASE_API_KEY=your_key_here
+SOLANA_RPC=https://api.devnet.solana.com
+SOLANA_PRIVATE_KEY_PATH=wallet.json`);
+
+make("LICENSE", `MIT License
+Copyright (c) 2025 ...
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software") to deal
+in the Software without restriction...`);
+
+make("README.md", `# SAFE MIND – Mandatory AI Safety Learning for Teens
+![License](https://img.shields.io/github/license/YOURNAME/safe-mind)
+![Build](https://github.com/YOURNAME/safe-mind/actions/workflows/build.yml/badge.svg)
+
+**Safe Mind™** teaches teens AI literacy, digital ethics, and resilience.
+See \`docs/curriculum.md\` for full course content.
+`);
+
+make(".github/workflows/build.yml", `name: Build App
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: cd app && npm ci && npm run lint`);
+
+make("CONTRIBUTING.md", `# Contributing
+1. Fork and clone.
+2. Create a feature branch.
+3. Run tests before PR.
+`);
+
+make("SECURITY.md", `# Security Policy
+- No personal data collected.
+- Report issues to lhmisme2011@gmail.com.`);
+
+make("docs/curriculum.md", `# SAFE MIND Curriculum
+## Module 1 – What Is AI?
+... (same 6-module content as detailed earlier) ...
+`);
+
+make("app/package.json", `{
+  "name": "safe-mind-app",
+  "version": "0.1.0",
+  "scripts": { "start": "expo start", "lint": "eslint ." },
+  "dependencies": { "@react-navigation/native": "^6", "react-native": "0.75.1" }
+}`);
+
+make("app/App.tsx", `import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+const Stack = createNativeStackNavigator();
+export default function App() {
+ return (<NavigationContainer>
+   <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown:false}}>
+     <Stack.Screen name="Home" component={HomeScreen}/>
+   </Stack.Navigator>
+ </NavigationContainer>);
+}`);
+
+// Minimal demo screen
+make("app/src/screens/HomeScreen.tsx", `import React from "react";
+import { View, Text } from "react-native";
+export default function HomeScreen(){return <View><Text>SAFE MIND</Text></View>}`);
+
+// Firebase backend stub
+make("backend/functions/src/issueCredential.ts", `import * as functions from "firebase-functions";
+export const issueCredential = functions.https.onCall(async()=>({ok:true}));`);
+
+make("onchain/solana/anchor_root.ts", `import {Connection,Keypair,Transaction,TransactionInstruction,sendAndConfirmTransaction,PublicKey} from "@solana/web3.js";
+const MEMO_PROGRAM_ID=new PublicKey("MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr");
+(async()=>{
+ const c=new Connection("https://api.devnet.solana.com","confirmed");
+ const kp=Keypair.generate();
+ const data=Buffer.from(JSON.stringify({root:"demo"}));
+ const ix=new TransactionInstruction({keys:[],programId:MEMO_PROGRAM_ID,data});
+ const tx=new Transaction().add(ix);
+ tx.feePayer=kp.publicKey;
+ tx.recentBlockhash=(await c.getLatestBlockhash()).blockhash;
+ const sig=await sendAndConfirmTransaction(c,tx,[kp]);
+ console.log("Anchored root:",sig);
+})();`);
+
+console.log("\n✅ SAFE MIND repo scaffold created.");

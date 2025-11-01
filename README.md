@@ -695,3 +695,57 @@ npm install
 npm run start
 # Alternatively, you can use:
 # npx expo start
+# 🧠 SAFE MIND: AI Safety Learning for Teens
+
+![License](https://img.shields.io/github/license/YOURNAME/safe-mind)
+![Build](https://img.shields.io/github/workflow/status/YOURNAME/safe-mind/Build%20App)
+[![Tech Stack](https://img.shields.io/badge/Stack-React_Native%7CFirebase%7CSolana-blueviolet)](https://www.solana.com/)
+
+---
+
+## 💡 Project Overview & Mission
+
+**Safe Mind™** is a full-stack educational platform designed to provide mandatory AI literacy, digital ethics, and resilience training for teens.
+
+### The Problem Solved
+In the age of generative AI, youth require **verifiable immunity** against deepfakes, misinformation, and the attention economy. Safe Mind solves this by delivering structured, age-appropriate ethical training and anchoring the completion certificate on an **immutable public ledger** (Solana) for permanent, verifiable proof of literacy.
+
+### Key Architectural Feature: Immutability
+Student completion is secured using a **decentralized credentialing mechanism**:
+1.  The Firebase Backend generates a cryptographic $\text{SHA-256}$ hash (`completion\_hash`) of the student's final results.
+2.  This hash is sent to the **Solana network** and recorded permanently via the Memo Program.
+3.  The final certificate displays the **Solana Transaction ID** for public, tamper-proof verification.
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology | Role |
+| :--- | :--- | :--- |
+| **Frontend (Mobile App)** | `React Native` / `Expo` | Student learning interface, quiz engine, profile display. |
+| **Backend (Serverless)** | `Firebase Functions` / `Firestore` | Core logic for issuing credentials and managing progress. |
+| **Immutability Layer** | `Solana Blockchain` | Anchor for permanent, verifiable proof of completion hashes. |
+
+---
+
+## 🚀 Getting Started & Local Deployment
+
+Follow these steps to set up the three core components of the Safe Mind application.
+
+### Prerequisites
+
+* Node.js (v18+) and npm
+* Firebase CLI (`npm install -g firebase-tools`)
+* Expo CLI (`npm install -g expo-cli`)
+* Solana CLI (Optional, for advanced testing)
+
+### Step 1: Frontend (App)
+
+The mobile application runs locally using Expo.
+
+```bash
+cd app
+npm install
+npm run start
+# Alternatively, you can use:
+# npx expo start

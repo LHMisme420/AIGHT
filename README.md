@@ -877,3 +877,65 @@ npm start
 cd ../solana
 npm install
 npm run start
+import os
+import sys
+from typing import Dict
+
+# --- Configuration Constants ---
+REPO_NAME = "safe-mind-sovereign"
+COPYRIGHT_HOLDER = "Leroy H. Mason"
+
+# Define the full file structure and content
+PROJECT_FILES: Dict[str, str] = {
+    # -------------------------------------------------------------
+    # 1. CORE REPOSITORY FILES (ROOT LEVEL)
+    # -------------------------------------------------------------
+    f"{REPO_NAME}/README.md": f"""# 🧠 SAFE MIND: EONS-AHEAD SOVEREIGN EDITION
+
+![License](https://img.shields.io/github/license/{COPYRIGHT_HOLDER.replace(' ', '_')}/{REPO_NAME})
+[![Tech Stack](https://img.shields.io/badge/Stack-Quantum--Resistant%7CZKP%7CSolana%7CRN-blueviolet)](https://www.solana.com/)
+[![Clearance Level](https://img.shields.io/badge/Clearance-SOVEREIGN-red)](./SECURITY.md)
+
+---
+
+## 💡 Project Overview & Mission (The Eons-Ahead Mandate)
+
+SAFE MIND V2.0 transcends contemporary software by integrating next-generation security and cognitive architecture to guarantee verifiable AI literacy.
+
+### Strategic Differentiation (The Four Pillars of Sovereignty)
+1. **Quantum-Resistant Immutability (PQC):** Hash anchoring is future-proofed against quantum computing threats.
+2. **Zero-Knowledge Assessment (ZKP):** Proves student knowledge acquisition without revealing test material (ultimate privacy).
+3. **Cognitive Offload Prevention:** Curriculum trains students to defend their own intellectual capacity against AI dependence.
+4. **C2PA/Provenance:** Focus shifts from reactive detection to proactive authentication of digital media.
+
+## 🛠️ Eons-Ahead Tech Stack
+
+| Component | Technology | Advanced Role |
+| :--- | :--- | :--- |
+| **Integrity Layer** | **Post-Quantum Cryptography (PQC)** | Quantum-safe key generation for hash integrity. |
+| **Assessment Layer** | **Zero-Knowledge Proofs (ZKP)** | Cryptographically private and fraud-proof quizzing. |
+| **Immutability Layer** | `Solana` / **Cross-Chain Attestation** | Federated, fault-tolerant record anchoring. |
+| **Hardware Future** | **Neuromorphic Computing** (Planned) | Target architecture for low-power, edge verification. |
+
+---
+
+## 🚀 Getting Started & Deployment
+**NOTE:** This version requires specialized ZKP and PQC libraries.
+
+### Step 1: Frontend (App)
+```bash
+cd app
+npm install
+npm run start
+cd backend/functions
+npm install
+npm run build
+firebase deploy --only functions
+# Start the ZKP Verification Service (Mandatory Pre-deployment)
+cd onchain/zkp
+npm install
+npm start 
+# Then, start the Solana anchor service
+cd ../solana
+npm install
+npm run start
